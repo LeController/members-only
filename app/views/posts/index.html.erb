@@ -1,5 +1,12 @@
 <h1>ALL POSTS</h1>
-
-<% @posts.each do |post| %>
-  <%= post %> 
-<% end %>
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <h3><%= post.title %></h3>
+      <%= post.body %> 
+      <% if user_signed_in? %>
+        <h6>Posted by <%= User.find(post.user_id).username %></h6>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
