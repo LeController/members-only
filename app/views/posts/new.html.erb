@@ -1,10 +1,7 @@
 <h1>Create a new post:</h1>
 <h2>For user: <%= current_user.username %></h2>
-<%= form_with model: @post do |form| %>
 
-  <%= form.label :user_id, "Your user_id" %>
-  <%= form.number_field :user_id, value: @user.id, disabled: true %>
-  <br>
+<%= form_with model: @post do |form| %>
   <%= form.label :title, "Your post title here" %>
   <%= form.text_field :title %>
   <br>

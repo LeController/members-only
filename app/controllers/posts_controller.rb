@@ -13,15 +13,16 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @user = current_user
   end
 
   # POST /posts
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id if current_user
 
     if @post.save
-      redirect_to @post
+      flash[:success] = "Post Successfully Created"
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
